@@ -1,0 +1,115 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}物联网服务平台-用户{% endblock %}
+<link rel="stylesheet" href="css/bootstrap.msin.css">
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+         </button>
+            <a class="navbar-brand" href="/">首页</a></div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/site">站点</a></li>
+                <li><a href="/device">设备</a></li>
+                <li><a href="/tenant">租户</a></li>
+                <li><a href="/user/a">用户</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        {% block page_content %}
+
+	<h1>用户列表</h1>
+
+
+	<table class="table">
+	    <thead>
+		<tr>
+			<th>用户名&nbsp;</th>
+			<th>用户数据&nbsp;</th>
+			<th>用户状态&nbsp;</th>
+			<th>上次登录&nbsp;</th>
+			<th>创建者&nbsp;</th>
+			<th>创建日期&nbsp;</th>
+		</tr>
+	    </thead>
+	    <tbody>
+		{% for row in users %}
+		    <tr>
+		        <td>{{ row.username }}</td>
+		        <td>{{ row.metdata }}</td>
+				<th>{{ row.status }}</th>
+				<td>{{ row.lastLogin }}</td>
+		        <td>{{ row.createdBy }}</td>
+				<td>{{ row. createdDate }}</td>
+
+		        <td clsId="{{ row.class_id }}">{{ row.title }}</td>
+		        <td>
+		            <button class="btn btn-primary"  data-toggle="modal" data-target="#myModal">编辑</button>
+		            <button class="btn btn-danger">删除</button>
+		        </td>
+		    </tr>
+		{% endfor %}
+	    </tbody>
+	</table>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">编辑</h4>
+			</div>
+
+			 <div id="cd-edit">
+				<form id="edit-form" class="form-horizontal" style="padding-top: 20px; padding-left: 20px;" method="POST" action="">
+				   <div class="control-group">
+					  <label class="control-label" for="edit-username" data-i18n="public.Username">用户名</label>
+					  <div class="controls">
+						 <input type="text" id="edit-username" name="username" class="input-large" title="Username">
+					  </div>
+				   </div>
+				   <div class="control-group">
+					  <label class="control-label" for="edit-data" data-i18n="public.Password">用户数据</label>
+					  <div class="controls">
+						 <input type="password" id="edit-data" name="metadata" class="input-large" title=Metadata>
+					  </div>
+				   </div>
+				   <div class="control-group">
+					  <label class="control-label"></label>
+					  <div class="controls">
+						 <button class="btn btn-primary margin-right" type="submit" id="edit-button">提交</button>
+					  </div>
+				   </div>
+
+				</form>
+			 </div>
+
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">关闭</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+        {% endblock %}
+    </div>
+
+{% endblock %}

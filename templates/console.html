@@ -1,0 +1,92 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}物联网服务平台-控制台{% endblock %}
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+         </button>
+            <a class="navbar-brand" href="/">首页</a></div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/site">站点</a></li>
+                <li><a href="/device">设备</a></li>
+                <li><a href="/tenant">租户</a></li>
+                <li><a href="/user/a">用户</a></li>
+            </ul>
+            <div class="navbar-collapse collapse" style="height:30; width:50; margin-right:0px; margin-top:0px; float:right">
+                <ul class="nav navbar-nav">
+                    <li><a href="/logout">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<h2>创建模态框（Modal）</h2>
+<!-- 按钮触发模态框 -->
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1">开始演示模态框</button>
+<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">编辑</button>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">标题</h4>
+			</div>
+
+			<div id="cd-login">
+				<form id="login-form" class="form-horizontal" style="padding-top: 20px; padding-left: 20px;" method="POST" action="">
+					<div class="control-group">
+						<label class="control-label" for="login-username" data-i18n="public.Username">Username</label>
+						<div class="controls">
+							<input type="text" id="login-username" name="username" class="input-large" title="Username">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="login-password" data-i18n="public.Password">Password</label>
+						<div class="controls">
+							<input type="password" id="login-password" name="password" class="input-large" title="Password">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label"></label>
+						<div class="controls">
+							<button class="btn btn-primary margin-right" type="submit" id="login-button">提交</button>
+
+						</div>
+					</div>
+					<div style="text-align: center; font-size: 16pt; color: #c00">
+
+					</div>
+				</form>
+			</div>
+
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+      <div class="index_copyright">
+        <div class="container text-right">
+        <p>Copyright © 2016-2017 | atm 版权所有</p>
+        <p>ICP证：粤ICP备**********号</p>	</div>
+    </div>
+  </div>
+</nav>
+
+{% endblock %}
