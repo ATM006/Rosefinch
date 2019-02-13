@@ -5,8 +5,8 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)    # Log等级总开关  
   
 # 第二步，创建一个handler，用于写入日志文件  
-logfile = '../logs/console.log'
-fh = logging.FileHandler(logfile, mode='w')
+logfile = './log/ros.log'
+fh = logging.FileHandler(logfile, mode='a')
 fh.setLevel(logging.INFO)   # 输出到file的log等级的开关
   
 # 第三步，再创建一个handler，用于输出到控制台  
