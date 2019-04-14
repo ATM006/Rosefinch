@@ -4,7 +4,7 @@ from flask import Flask,make_response,redirect,abort
 from flask import render_template,request,jsonify
 from flask.ext.bootstrap import Bootstrap
 
-import requests,json
+import requests,json,os
 import auth
 import log
 
@@ -93,6 +93,23 @@ def get_user(name):
 @app.route('/logout')
 def logout():
     return render_template('index.html')
+
+
+# show photo
+@app.route('/img/<string:filename>', methods=['GET'])
+def show_photo(filename):
+    if request.method == 'GET':
+        if filename is None:
+            pass
+        else:
+            log.logger.debug('filename is %s' % filename)
+            image_data = open(os.path.join('./templates/img', '%s' % filename), "rb").read()
+            response = make_response(image_data)
+            response.headers['Content-Type'] = 'image/png'
+            return response
+    else:
+        pass
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=8080,debug=False)
