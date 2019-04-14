@@ -97,18 +97,49 @@ def logout():
 
 # show photo
 @app.route('/img/<string:filename>', methods=['GET'])
-def show_photo(filename):
+def img_handle(filename):
     if request.method == 'GET':
         if filename is None:
             pass
         else:
             log.logger.debug('filename is %s' % filename)
-            image_data = open(os.path.join('./templates/img', '%s' % filename), "rb").read()
+            image_data = open(os.path.join('./static/img', '%s' % filename), "rb").read()
             response = make_response(image_data)
             response.headers['Content-Type'] = 'image/png'
             return response
     else:
         pass
+
+#css
+@app.route('/css/<string:filename>', methods=['GET'])
+def css_handle(filename):
+    if request.method == 'GET':
+        if filename is None:
+            pass
+        else:
+            log.logger.debug('filename is %s' % filename)
+            image_data = open(os.path.join('./static/css', '%s' % filename), "rb").read()
+            response = make_response(image_data)
+            response.headers['Content-Type'] = 'text/css'
+            return response
+    else:
+        pass
+
+#js
+@app.route('/js/<string:filename>', methods=['GET'])
+def js_handle(filename):
+    if request.method == 'GET':
+        if filename is None:
+            pass
+        else:
+            log.logger.debug('filename is %s' % filename)
+            image_data = open(os.path.join('./templates/js', '%s' % filename), "rb").read()
+            response = make_response(image_data)
+            response.headers['Content-Type'] = 'text/javascript'
+            return response
+    else:
+        pass
+
 
 
 if __name__ == '__main__':
