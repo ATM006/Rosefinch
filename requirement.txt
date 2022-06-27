@@ -64,7 +64,7 @@ python-systemd==231
 pytz==2018.4
 pyxdg==0.25
 redis==2.10.6
-reportlab==3.3.0
+reportlab==3.5.55
 requests==2.18.4
 sessioninstaller==0.0.0
 six==1.11.0
